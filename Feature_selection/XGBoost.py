@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu May  7 20:33:44 2020
-
-@author: Administrator
-"""
 
 import numpy as np
 import pandas as pd
@@ -25,7 +19,7 @@ from sklearn.preprocessing import scale,StandardScaler
 #label_P = np.ones(int(row1))
 #label_N = np.zeros(int(row2))
 #label = np.hstack((label_P,label_N))
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv')
+data_=pd.read_csv(r'')
 data=np.array(data_)
 data=data[:,:]
 [m1,n1]=np.shape(data)
@@ -57,6 +51,5 @@ train_data=shu[:,mask]
 X = train_data
 #y = test_data
 data_csv=pd.DataFrame(data=X)
-data_csv.to_csv('RBP_XGB.csv')
-#data_csv=pd.DataFrame(data=y)
-#data_csv.to_csv('A_NR_network_SY_LGB_400.csv')
+data_csv.to_csv('')
+
