@@ -1,9 +1,4 @@
- # -*- coding: utf-8 -*-
-"""
-Created on Thu Sep  9 15:40:51 2021
 
-@author: ice.ice
-"""
 import math
 import pandas as pd
 import numpy as np
@@ -22,7 +17,7 @@ def get_shuffle(dataset,label):
     dataset = dataset[index]
     label = label[index]
     return dataset,label  
-data_start = pd.read_csv("RBP_KPLS_22.csv")
+data_start = pd.read_csv("")
 # label_P=np.ones((int(7129),1)) 
 # label_N=np.zeros((int(7060),1))
 label_P=np.ones((int(2616),1)) 
@@ -55,7 +50,7 @@ Discriminator.compile(loss='categorical_crossentropy',
             optimizer=optimizer,
             metrics=['accuracy'])
 
-#####构建生成器，并组合生成器和鉴别器成GAN
+
 
 N_ideas = input_dimwx
 G = Sequential()
@@ -182,6 +177,6 @@ yscore_sum = pd.DataFrame(data=yscore)
 ytest=ytest[np.array(range(1,row)),:]
 ytest_sum = pd.DataFrame(data=ytest)
 
-data_csv_zhibiao.to_csv('GAN_RBP_KPLS.csv')
-yscore_sum.to_csv('yscore_sum2_GAN_KPLS.csv')
-ytest_sum.to_csv('ytest_sum2_GAN_KPLS.csv')
+data_csv_zhibiao.to_csv('')
+yscore_sum.to_csv('')
+ytest_sum.to_csv('')
