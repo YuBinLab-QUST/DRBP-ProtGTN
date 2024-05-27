@@ -17,16 +17,7 @@ from sklearn.metrics import roc_curve, auc
 import math
 from sklearn.metrics import average_precision_score
 import matplotlib.pyplot as plt
-#parser = argparse.ArgumentParser()
-#parser.add_argument('--no-cuda', action='store_true', default=False, help='Disables CUDA training.')
-#parser.add_argument('--epochs', type=int, default=10, help='Number of epochs to train.')
-#parser.add_argument('--lr', type=float, default=0.005, help='Initial learning rate.')
-#parser.add_argument('--fastmode', action='store_true', default=False, help='Validate during training pass.')
-#parser.add_argument('--sparse', action='store_true', default=False, help='GAT with sparse version or not.')
-#parser.add_argument('--patience', type=int, default=100, help='Patience')
 
-#args = parser.parse_args()
-#args.cuda = not args.no_cuda and torch.cuda.is_available()
 
 def get_shuffle(dataset,label):    
     index = [i for i in range(len(label))]
@@ -47,8 +38,8 @@ def to_categorical(y, nb_classes=None):
 
 
 
-# data_=pd.read_csv(r'RBP_kPCA.csv')
-data_=pd.read_csv(r'PDB14189_KPLS_22.csv')
+
+data_=pd.read_csv(r'')
 data1=np.array(data_)
 data=data1[:,:]
 [m1,n1]=np.shape(data)
@@ -196,9 +187,9 @@ yscore_sum = pd.DataFrame(data=yscore)
 ytest=ytest[np.array(range(1,row)),:]
 ytest_sum = pd.DataFrame(data=ytest)
 
-data_csv_zhibiao.to_csv('GCN_PDB14189_KPLS.csv')
-yscore_sum.to_csv('yscore_sum_GCN_KPLS.csv')
-ytest_sum.to_csv('ytest_sum_GCN_KPLS.csv')
+data_csv_zhibiao.to_csv('')
+yscore_sum.to_csv('')
+ytest_sum.to_csv('')
 
 
 fpr, tpr, _ = roc_curve(ytest[:,0], yscore[:,0])
