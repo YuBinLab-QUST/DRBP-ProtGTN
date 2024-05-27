@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Sep 13 20:14:46 2021
-
-@author: 菜菜
-"""
 
 from numpy.core.fromnumeric import shape
 import torch
@@ -77,35 +71,9 @@ def to_categorical(y, nb_classes=None):
     return Y
 
 def load_data():
-    # data_=pd.read_csv(r'RBP_kPCA.csv')
-    data_=pd.read_csv(r'RBP_KPLS_22.csv')
-    # data_=pd.read_csv(r'/tmp/pycharm_project_900/DRBPPred-GAT/Feature_selection/PCA.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\PCA.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\GA.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\CT.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPaPred-GAT\Feature_extraction\NMBroto.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\GTPC.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\CTD.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\PseAAC.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\EBGW.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\MMI.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\PsePSSM.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL_auto_new.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL_LLE.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL_SE.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL_Elastic_net.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL_LR.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL_Lasso.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL_ET.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL_XGB.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\DDE.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\Kmer.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\RCKmer.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\MonoDiKGap.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\test_ALL_Auto.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_selection\ALL_auto_RN.csv')
-    # data_=pd.read_csv(r'D:\PycharmProjects\DRBPPred-GAT\Feature_extraction\EBGW.csv')
+    
+    data_=pd.read_csv(r'')
+    
     data1=np.array(data_)
 
 
@@ -219,10 +187,10 @@ print("aupr=%.2f%% (+/- %.2f%%)" % (np.mean(scores, axis=0)[8]*100,np.std(scores
 row=ytest.shape[0]
 ytest=ytest[np.array(range(1,row)),:]
 ytest_sum = pd.DataFrame(data=ytest)
-ytest_sum.to_csv('ytest_sum2_GAT_KPLS.csv')
+ytest_sum.to_csv('')
 yscore_=yscore[np.array(range(1,row)),:]
 yscore_sum = pd.DataFrame(data=yscore_)
-yscore_sum.to_csv('yscore_sum2_GAT_KPLS.csv')
+yscore_sum.to_csv('')
 
 scores=np.array(sepscore_cnn)
 result1=np.mean(scores,axis=0)
@@ -230,6 +198,6 @@ H1=result1.tolist()
 sepscore_cnn.append(H1)
 result=sepscore_cnn
 data_csv = pd.DataFrame(data=result)
-data_csv.to_csv('GAT_RBP_KPLS.csv')
+data_csv.to_csv('')
 
     
