@@ -33,7 +33,7 @@ def get_shuffle(dataset,label):
     label = label[index]
     return dataset,label 
 
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature selection\PDB14189_KPLS_22.csv')
+data_=pd.read_csv(r'')
 data=np.array(data_)
 data=data[:,:]
 [m1,n1]=np.shape(data)
@@ -113,11 +113,11 @@ print("aupr=%.2f%% (+/- %.2f%%)" % (np.mean(scores, axis=0)[8]*100,np.std(scores
 row=ytest.shape[0]
 ytest=ytest[np.array(range(1,row)),:]
 ytest_sum = pd.DataFrame(data=ytest)
-ytest_sum.to_csv('ytest_sum_DNN_KPLS.csv')
+ytest_sum.to_csv('')
 
 yscore_=yscore[np.array(range(1,row)),:]
 yscore_sum = pd.DataFrame(data=yscore_)
-yscore_sum.to_csv('yscore_sum_DNN_KPLS.csv')
+yscore_sum.to_csv('')
 
 scores=np.array(sepscore_rnn)
 result1=np.mean(scores,axis=0)
@@ -125,4 +125,4 @@ H1=result1.tolist()
 sepscore_rnn.append(H1)
 result=sepscore_rnn
 data_csv = pd.DataFrame(data=result)
-data_csv.to_csv('DNN_PDB14189_KPLS.csv')
+data_csv.to_csv('v')
