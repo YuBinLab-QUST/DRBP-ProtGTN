@@ -70,27 +70,12 @@ def PAAC(fastas, lambdaValue=25, w=0.05, **kw):
 		encodings.append(code)
 	return encodings
 
-#if __name__ == '__main__':
-#	if len(sys.argv) == 1:
-#		print(USAGE)
-#		sys.exit(1)
-#	fastas = readFasta.readFasta(sys.argv[1])
-#	lambdaValue = int(sys.argv[2]) if len(sys.argv) >= 3 else 30
-#	output = sys.argv[3] if len(sys.argv) >= 4 else 'encoding.tsv'
-#	encodings = PAAC(fastas, lambdaValue)
-#	saveCode.savetsv(encodings, output)
-#   
-# fastas = readFasta.readFasta(r"D:\PycharmProjects\DRBPPred-GAT\Dataset\Training\RBP_training.txt")
-# fastas = readFasta.readFasta(r"D:\PycharmProjects\DRBPPred-GAT\Dataset\Test\PDB186.txt")
-# fastas = readFasta.readFasta(r"D:\PycharmProjects\DRBPPred-GAT\Dataset\Training\NBP_training.txt")
-# fastas=readFasta.readFasta(r"D:\PycharmProjects\DRBPPred-GAT\Dataset\Test\PDB186.txt")
-# fastas=readFasta.readFasta(r"D:\PycharmProjects\my\dataset\Training\RBP_training.txt")
-# fastas=readFasta.readFasta(r"D:\PycharmProjects\my\dataset\Test\Athaliana.txt")
-fastas=readFasta.readFasta(r"D:\PycharmProjects\my\dataset\Test\Athaliana.txt")
+
+fastas=readFasta.readFasta(r"")
 kw=  {'path': r"PseAAC",'train':r"pro.txt",'order':'ARNDCQEGHILKMFPSTWYVO'}
 result=PAAC(fastas, lambdaValue=25, w=0.05, **kw)
 # print(result)
 data=np.matrix(result[1:])
 data_PseAAC=pd.DataFrame(data=data[:,1:])
 # data_PseAAC.to_csv('PseAAC_PDB186.csv')
-data_PseAAC.to_csv('PseAAC_Athaliana_25.csv')
+data_PseAAC.to_csv('')
