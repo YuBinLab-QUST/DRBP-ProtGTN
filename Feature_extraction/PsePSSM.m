@@ -3,7 +3,7 @@ clc
 lamdashu=5;
 %Reading protein sequence of PSSM
 WEISHU=186;
-name=textread('id_list_186.txt','%s')    %Read protein name
+name=textread('','%s')    %Read protein name
 for i=1:186
     nnn=name(i);
     nnn1=strcat(nnn,'.pssm');  %Read PSSM file  
