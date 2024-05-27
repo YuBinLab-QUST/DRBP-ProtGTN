@@ -1,6 +1,3 @@
-# Copyright (c) 2019 Wright State University
-# Author: Daniel Foose <foose.3@wright.edu>
-# License: MIT
 
 import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -193,7 +190,7 @@ class OPLS(BaseEstimator, TransformerMixin):
         X = check_array(X)
         Z = self.transform(X)
         return np.sum(np.square(Z)) / np.sum(np.square(X - self.x_mean_))  # Z is already properly centered
-file_path = r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv'  # 请替换为您的 CSV 文件路径
+file_path = r''  
 data = pd.read_csv(file_path)
 data1=np.array(data)
 data=data1[:,:]
@@ -207,18 +204,18 @@ label1=np.ones((int(2616),1))
 label2=np.zeros((int(4175),1))
 y = np.append(label1, label2)
 
-n_components = 50  # 你想要保留的成分数量
+n_components = 50  
 opls = OPLS(n_components=n_components, scale=True)
 
-# 拟合OPLS模型
+
 opls.fit(X_std, y)
 
-# 使用OPLS模型转换数据
+
 X_transformed = opls.transform(X_std)
 kpca_df = pd.DataFrame(data=X_transformed)
 
 # Save the DataFrame to a new CSV file
-kpca_df.to_csv('RBP_OPLS.csv', index=False)
-# X_transformed 是降维后的数据
+kpca_df.to_csv('', index=False)
+
 print("原始特征空间维度:", X_std.shape[1])
 print("降维后的特征空间维度:", X_transformed.shape[1])
