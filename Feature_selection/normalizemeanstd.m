@@ -1,11 +1,5 @@
 function [xapp,xtest,meanxapp,stdxapp] = normalizemeanstd(xapp,xtest,meanx,stdx)
-% USAGE
-% 
-%  [xapp,xtest,meanxapp,stdxapp] = normalizemeanstd(xapp,xtest)
-%
-% normalize inputs and output mean and standard deviation to 0 and 1
-%
-% 
+
 tol=1e-5;
 
 
@@ -18,7 +12,7 @@ else
     meanxapp = meanx;
     stdxapp = stdx;
 end;
-nbxapp = size( xapp,1 ); % ��������
+nbxapp = size( xapp,1 ); 
 indzero = find( abs(stdxapp)<tol );
 %keyboard
 if ~isempty(indzero)
