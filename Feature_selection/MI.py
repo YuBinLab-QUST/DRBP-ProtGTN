@@ -14,7 +14,7 @@ from sklearn.model_selection import StratifiedKFold
 #import utils.tools as utils
 from dimensional_reduction1 import selectFromExtraTrees
 from dimensional_reduction1 import mutual_mutual
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv')
+data_=pd.read_csv(r'')
 data=np.array(data_)
 data=data[:,:]
 [m1,n1]=np.shape(data)
@@ -27,4 +27,4 @@ shu=scale(data)
 data_2=mutual_mutual(shu,label,k=100)
 shu=data_2
 data_csv = pd.DataFrame(data=shu)
-data_csv.to_csv('RBP_MI.csv')
+data_csv.to_csv('')
