@@ -3,8 +3,8 @@ from sklearn.decomposition import KernelPCA,FastICA
 from sklearn.cross_decomposition import PLSRegression
 from sklearn.preprocessing import StandardScaler
 import numpy as np
-# Load data from CSV file
-file_path = r'D:\PycharmProjects\my\feature extraction\RBPHuman.csv'  # 请替换为您的 CSV 文件路径
+
+file_path = r''  # 请替换为您的 CSV 文件路径
 data = pd.read_csv(file_path)
 data1=np.array(data)
 data=data1[:,:]
@@ -24,10 +24,10 @@ label4=np.zeros((int(597),1))
 y = np.concatenate((label1, label2, label3, label4))
 pls = PLSRegression(n_components=100)
 
-# 对数据进行拟合，PLS会尝试找到最适合预测y的X的成分
+
 pls.fit(X_std, y)
 
-# 变换X到新空间
+
 X_transformed = pls.transform(X_std)
 
 
@@ -35,4 +35,4 @@ X_transformed = pls.transform(X_std)
 kpca_df = pd.DataFrame(data=X_transformed)
 
 # Save the DataFrame to a new CSV file
-kpca_df.to_csv( 'RBPHuman_PLS.csv', index=False)
+kpca_df.to_csv( '', index=False)
