@@ -92,7 +92,7 @@ def IG(encodings, num, dim):
     return res, ress
 
 
-encodings = pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv')
+encodings = pd.read_csv(r'')
 data = np.array(encodings)
 data = data[:, :]
 # print(data.shape)
@@ -109,4 +109,4 @@ A = [int(x) for x in feature_index]
 # A = [int(x) for x in feature_index.ravel()]
 set_end = data[:, A[:100]]
 data_csv = pd.DataFrame(data=set_end)
-data_csv.to_csv('RBP_IG.csv')
+data_csv.to_csv('')
