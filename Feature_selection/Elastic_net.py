@@ -26,8 +26,8 @@ def elasticNet(data,label,alpha =np.array([0.05])):
     return new_data,mask	
     
     
-# data_=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\PDB14189hunhe2.csv')
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv')
+
+data_=pd.read_csv(r'')
 
 data=np.array(data_)
 data=data[:,:]
@@ -45,4 +45,4 @@ shu=scale(data)
 data_2,index=elasticNet(shu,label)
 shu=data_2
 data_csv = pd.DataFrame(data=shu)
-data_csv.to_csv('RBP_Elastic_net.csv')
+data_csv.to_csv('')
