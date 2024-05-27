@@ -60,7 +60,7 @@ def calculate_performace(test_num, pred_y, labels):
     mcc = float(tp * tn - fp * fn) / (math.sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)) + 1e-06)
     f1 = float(tp * 2) / (tp * 2 + fp + fn + 1e-06)
     return acc, precision, npv, sensitivity, specificity, mcc, f1
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature selection\PDB14189_KPLS_22.csv')
+data_=pd.read_csv(r'')
 data=np.array(data_)
 data=data[:,:]
 [m1,n1]=np.shape(data)
@@ -112,10 +112,10 @@ result=sepscores
 row=yscore.shape[0]
 yscore=yscore[np.array(range(1,row)),:]
 yscore_sum = pd.DataFrame(data=yscore)
-yscore_sum.to_csv('yscore_sum_RF_KPLS.csv')
+yscore_sum.to_csv('')
 ytest=ytest[np.array(range(1,row)),:]
 ytest_sum = pd.DataFrame(data=ytest)
-ytest_sum.to_csv('ytest_sum_RF_KPLS.csv')
+ytest_sum.to_csv('')
 fpr, tpr, _ = roc_curve(ytest[:,0], yscore[:,0])
 auc_score=np.mean(scores, axis=0)[7]
 lw=2
@@ -130,4 +130,4 @@ plt.title('Receiver operating characteristic')
 plt.legend(loc="lower right")
 plt.show()
 data_csv = pd.DataFrame(data=result)
-data_csv.to_csv('RF_PDB14189_KPLS.csv')
+data_csv.to_csv('')
