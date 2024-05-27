@@ -14,8 +14,8 @@ import torch
 from torch_geometric.data import Data
 
 
-# 1. 从CSV文件加载蛋白质特征向量数据
-csv_file = r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv'  # 替换为你的CSV文件路径
+
+csv_file = r''  # 替换为你的CSV文件路径
 data_df = pd.read_csv(csv_file)
 data1=np.array(data_df)
 
@@ -24,16 +24,16 @@ data=data1[:,:]
 
 
 
-k = 5  # 选择K值，即每个节点连接的最近邻节点数量
+k = 5 
 nbrs = NearestNeighbors(n_neighbors=k, metric='euclidean').fit(data)
 distances, indices = nbrs.kneighbors(data)
 
 
-# 3. 创建一个图
-graph = nx.Graph()
-graph.add_nodes_from(range(len(data)))  # 添加节点
 
-# 根据KNN结果，添加边
+graph = nx.Graph()
+graph.add_nodes_from(range(len(data)))
+
+
 for i in range(len(data)):
     for j in indices[i]:
         if i != j:
@@ -63,13 +63,13 @@ out_channels = 100
 num_features = 1522
 epochs = 180
 
-# 创建 GAE 模型
+
 model = GAE(GCNEncoder(num_features, out_channels))
 
-# 定义优化器
+
 optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
 
-# 训练函数
+
 def train():
     model.train()
     optimizer.zero_grad()
@@ -79,15 +79,15 @@ def train():
     optimizer.step()
     return float(loss)
 
-# 训练循环
+
 for epoch in range(epochs):
     loss = train()
     print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss}')
 
-# 获取编码后的低维表示
+
 Z = model.encode(data.x, data.edge_index).detach().numpy()
 df = pd.DataFrame(Z)
-csv_file_path = 'RBP_GAE.csv'
+csv_file_path = ''
 df.to_csv(csv_file_path, index=False)
 
 
