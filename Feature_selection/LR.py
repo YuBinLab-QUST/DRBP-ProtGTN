@@ -15,7 +15,7 @@ from sklearn.model_selection import StratifiedKFold
 from  L1_Matine import logistic_dimension
 #from dimension_reduction import KPCA,LLE,SE,TSVD
 
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv')
+data_=pd.read_csv(r'')
 data=np.array(data_)
 data=data[:,:]
 [m1,n1]=np.shape(data)
@@ -28,4 +28,4 @@ data_2,mask=logistic_dimension(shu,label,parameter=0.02)
 
 shu=data_2
 data_csv = pd.DataFrame(data=shu)
-data_csv.to_csv('RBP_LR.csv')
+data_csv.to_csv('')
