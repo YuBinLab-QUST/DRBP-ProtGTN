@@ -93,20 +93,9 @@ def to_categorical(y, nb_classes=None):
     return Y
 def categorical_probas_to_classes(p):
     return np.argmax(p, axis=1)
-# data_=pd.read_csv('RBP_NEW.csv')
-# data_=pd.read_csv('RBPhunhe2.csv')
-# data_=pd.read_csv('protein_features_RBP.csv')
-# data_=pd.read_csv('Group_LassoPDB14189.csv')
-# data_=pd.read_csv('RBP_PLS_100.csv')
-# data_=pd.read_csv('RBP_KPLS_22.csv')
-# data_=pd.read_csv('ProtBert_features_RBP.csv')
-# data_=pd.read_csv('protein_features_RBP.csv')
-data_=pd.read_csv('ESM_PDB14189_5.csv')
-# data_=pd.read_csv('PsePSSM_PDB14189_10.csv')
-# data_=pd.read_csv('RBP_kPCA.csv')
 
-# data_=pd.read_csv('ESM_RBP.csv')
-# data_=pd.read_csv('PDB14189_kPCA.csv')
+data_=pd.read_csv('')
+
 data1=np.array(data_)
 data=data1[:,:]
 print(data.shape)
@@ -115,10 +104,7 @@ print(data.shape)
 label1=np.ones((int(7129),1)) 
 label2=np.zeros((int(7060),1))
 
-# label1=np.ones((int(2616),1)) 
-# label2=np.zeros((int(4175),1))
-# label1=np.ones((int(93),1)) 
-# label2=np.zeros((int(93),1))
+
 labels=np.append(label1,label2)
 shu=data
 X,y=get_shuffle(shu,labels)
@@ -128,56 +114,33 @@ print(features.shape[0])
 y_tensor = torch.from_numpy(y)
 labels = torch.squeeze(y_tensor)
 
-# cosine_sim = cosine_similarity(features)
-# num_nodes_type_A = 7129
-# num_nodes_type_B = 7060
 
-# # 提取相应的余弦相似性矩阵
-# cosine_sim_A_B = cosine_sim[:num_nodes_type_A, num_nodes_type_A:]
-# cosine_sim_B_A = cosine_sim[num_nodes_type_A:, :num_nodes_type_A]
 
-# # 创建异构图
-# g = dgl.heterograph({
-#     ('A', 'AB', 'B'): (np.arange(num_nodes_type_A), np.arange(num_nodes_type_A, num_nodes_type_A + num_nodes_type_B)),
-#     ('B', 'BA', 'A'): (np.arange(num_nodes_type_A, num_nodes_type_A + num_nodes_type_B), np.arange(num_nodes_type_A))
-# })
-
-# # 添加边的特征
-# g.edges['AB'].data['weight'] = torch.tensor(cosine_sim_A_B.flatten(), dtype=torch.float32)
-# g.edges['BA'].data['weight'] = torch.tensor(cosine_sim_B_A.flatten(), dtype=torch.float32)
-
-# # 输出异构图的信息
-# print(g)
 g = dgl.knn_graph(features, 5, algorithm='bruteforce-blas', dist='cosine')
 g = dgl.remove_self_loop(g)
 g = dgl.add_self_loop(g)
 adj = g.adjacency_matrix().to_dense()
-# print(adj)
-# 构建稀疏的邻接矩阵（如果需要）
+
 adjacency_matrix_sparse = sp.csr_matrix(adj)
 nnz = adjacency_matrix_sparse.getnnz()
 
-# 或者使用 shape 属性获取矩阵的形状
+
 num_rows, num_cols = adjacency_matrix_sparse.shape
 
-# 将稀疏矩阵转换为 PyTorch 的稀疏张量
+
 adj_matrix_tensor = torch.tensor(adjacency_matrix_sparse.toarray()).long()
 
-# print(2)
-# adj_matrix_tensor = Tensor(adjacency_matrix_sparse).long()
+
 nonzero_coords = adj_matrix_tensor.nonzero()
 
-# 获取非零元素的数量
+
 nnz = nonzero_coords.size(0)
 
-# 创建一个表示稀疏矩阵的 PyTorch 的 tuple 表示法
-A = [(nonzero_coords.t(), torch.ones(nnz))]  # 假设权重都是1
-# A = [(adj_matrix_tensor.nonzero().t(), torch.ones(adj_matrix_tensor.nnz))]  # 这里假设权重都是1
-# 现在你有了邻接矩阵，可以将其用作GTN模型的输入之一
 
-# print(3)
-print(len(A))
-# 将标签转换为张量
+A = [(nonzero_coords.t(), torch.ones(nnz))]  # 假设权重都是1
+
+
+
 labels_tensor = torch.tensor(labels)
 
 # 定义十倍交叉验证
@@ -203,14 +166,10 @@ for fold, (train_index, test_index) in enumerate(skf.split(features, labels)):
                             num_nodes = 14189,
                             args=args)
     print(model)
-    # 定义优化器和损失函数
-    # optimizer = torch.optim.Adam(model.parameters(), lr=0.02, weight_decay=0.001)
-    # optimizer=torch.optim.Adam(model.parameters(),lr=0.001,weight_decay=1e-4)
+
     optimizer=torch.optim.Adam(model.parameters(),lr=0.01,weight_decay=1e-4)
     loss = nn.CrossEntropyLoss()
-    # criterion = model.loss
 
-    # 进行模型训练
     num_epochs = 180  # 根据需p要设置训练轮数
     for epoch in range(num_epochs):
         optimizer.zero_grad()
@@ -244,32 +203,7 @@ for fold, (train_index, test_index) in enumerate(skf.split(features, labels)):
         aupr = average_precision_score(y_test, probas[:, 1].detach().numpy())
         sepscore_cnn.append([acc, precision,npv, sensitivity, specificity, mcc,f1,roc_auc,aupr])
         print('NB:acc=%f,precision=%f,npv=%f,sensitivity=%f,specificity=%f,mcc=%f,f1=%f,roc_auc=%f,aupr=%f'
-              % (acc, precision,npv, sensitivity, specificity, mcc,f1, roc_auc,aupr))
-# trained_weights = model.state_dict()
-
-# # 获取Ws参数（假设你想要获取第一个FastGTN中的第一个Ws参数）
-# Ws_weights = trained_weights['fastGTNs.0.Ws.0'].cpu().numpy()
-# # 如果你想要保存这个权重矩阵
-# np.save('Ws_0.npy', Ws_weights)
-
-# # 获取linear1层的权重
-# linear1_weights = trained_weights['fastGTNs.0.linear1.weight'].cpu().numpy()
-# # 保存linear1层的权重矩阵
-# # np.save('linear1_weights.npy', linear1_weights)
-# np.savetxt('linear_weights2.csv', linear1_weights, delimiter=',')
-# # 可视化其中的权重矩阵
-# plt.imshow(Ws_weights, cmap='hot', aspect='auto')
-# plt.colorbar()
-# plt.title('Weights of Ws[0]')
-# plt.savefig('re.png')
-# plt.show()
-
-# # 另一个层的可视化
-# plt.imshow(linear1_weights, cmap='hot', aspect='auto')
-# plt.colorbar()
-# plt.title('Weights of Linear1')
-# plt.savefig('re2.png')
-# plt.show()       
+              % (acc, precision,npv, sensitivity, specificity, mcc,f1, roc_auc,aupr)  
 
 scores=np.array(sepscore_cnn)
 print("acc=%.2f%% (+/- %.2f%%)" % (np.mean(scores, axis=0)[0]*100,np.std(scores, axis=0)[0]*100))
@@ -284,10 +218,10 @@ print("aupr=%.2f%% (+/- %.2f%%)" % (np.mean(scores, axis=0)[8]*100,np.std(scores
 row=ytest.shape[0]
 ytest=ytest[np.array(range(1,row)),:]
 ytest_sum = pd.DataFrame(data=ytest)
-ytest_sum.to_csv('ytest_sum_test.csv')
+ytest_sum.to_csv('')
 yscore_=yscore[np.array(range(1,row)),:]
 yscore_sum = pd.DataFrame(data=yscore_)
-yscore_sum.to_csv('yscore_sum_test.csv')
+yscore_sum.to_csv('')
 
 scores=np.array(sepscore_cnn)
 result1=np.mean(scores,axis=0)
@@ -295,7 +229,7 @@ H1=result1.tolist()
 sepscore_cnn.append(H1)
 result=sepscore_cnn
 data_csv = pd.DataFrame(data=result)
-data_csv.to_csv('GTN_test.csv')
+data_csv.to_csv('')
 time_end = time.time()  # 记录结束时间
 time_sum = time_end - time_start  # 计算的时间差为程序的执行时间，单位为秒/s
 print(time_sum)
