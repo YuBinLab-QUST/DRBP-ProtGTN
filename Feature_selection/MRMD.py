@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Apr 24 09:07:30 2023
 
-@author: dell
-"""
 
 import pandas as pd
 import numpy as np
@@ -68,7 +63,7 @@ def mrmd(X,y,n_selected_features=200):
     mrmd_end=mrmd_order[:n_selected_features]
     return mrmd_end
 
-data_train=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv')
+data_train=pd.read_csv(r'')
 data_=np.array(data_train)
 data=data_[:,:]
 [m1,n1]=np.shape(data)
@@ -83,4 +78,4 @@ X=np.array(feature)
 y=label.astype('int64')
 MRMDresult=mrmd(X,y,n_selected_features=100)
 MRMDresult = feature[feature.columns[MRMDresult]]
-MRMDresult.to_csv("RBP_MRMD.csv")
+MRMDresult.to_csv("")
