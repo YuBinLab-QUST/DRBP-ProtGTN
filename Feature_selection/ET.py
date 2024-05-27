@@ -24,20 +24,9 @@ def selectFromExtraTrees(data,label):
     return new_data,importance
 
 
-#def selectFromExtraTrees(data,label):
-#    clf = ExtraTreesClassifier(n_estimators=1, criterion='gini', max_depth=None, 
-#                               min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, 
-#                               max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, 
-#                               min_impurity_split=None, bootstrap=False, oob_score=False, n_jobs=1, 
-#                               random_state=None, verbose=0, warm_start=False, class_weight=None)#entropy
-#    clf.fit(data,label)
-#    importance=clf.feature_importances_ 
-#    model=SelectFromModel(clf,prefit=True)
-#    new_data = model.transform(data)
-#    return new_data,importance
 
 
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv')
+data_=pd.read_csv(r'')
 data=np.array(data_)
 data=data[:,:]
 [m1,n1]=np.shape(data)
@@ -50,4 +39,4 @@ shu=scale(data)
 data_2,importance=selectFromExtraTrees(shu,label)
 shu=data_2
 data_csv = pd.DataFrame(data=shu)
-data_csv.to_csv('RBP_ET.csv')
+data_csv.to_csv('')
