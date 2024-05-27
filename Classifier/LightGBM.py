@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu May 19 08:42:19 2022
-
-@author: 菜菜
-"""
-
 import numpy as np
 import pandas as pd
 import scipy.io as sio
@@ -37,8 +30,8 @@ def get_shuffle(dataset,label):
     return dataset,label  
    
 
-# data_=pd.read_csv(r'D:\PycharmProjects\my\feature selection\RBP_kPCA.csv')
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature selection\PDB14189_KPLS_22.csv')
+
+data_=pd.read_csv(r'')
 data1=np.array(data_)
 data=data1[:,:]
 [m1,n1]=np.shape(data)
@@ -97,10 +90,10 @@ result=sepscores
 row=yscore.shape[0]
 yscore=yscore[np.array(range(1,row)),:]
 yscore_sum = pd.DataFrame(data=yscore)
-yscore_sum.to_csv('yscore_sum_LightGBM_KPLS.csv')
+yscore_sum.to_csv('')
 ytest=ytest[np.array(range(1,row)),:]
 ytest_sum = pd.DataFrame(data=ytest)
-ytest_sum.to_csv('ytest_sum_LightGBM_KPLS.csv')
+ytest_sum.to_csv('')
 fpr, tpr, _ = roc_curve(ytest[:,0], yscore[:,0])
 auc_score=np.mean(scores, axis=0)[7]
 lw=2
@@ -119,4 +112,4 @@ colum = ['ACC', 'precision', 'npv', 'Sn', 'Sp','MCC','F1','AUC']
 ro=['1', '2', '3','4','5','6','7','8','9','10','11']
 #ro=['1', '2', '3','4','5','6']
 #data_csv = pd.DataFrame(columns=colum, data=result,index=ro)
-data_csv.to_csv('LightGBM_PDB14189_KPLS.csv')
+data_csv.to_csv('')
