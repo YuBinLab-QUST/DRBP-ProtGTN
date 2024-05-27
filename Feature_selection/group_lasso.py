@@ -18,8 +18,8 @@ from keras.layers import Dense, merge,Input,Dropout
 from keras.models import Model
 from dimensional_reduction import Light_lasso
 
-# data_=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\PDB14189hunhe2.csv')
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPAthaliana.csv')
+
+data_=pd.read_csv(r'')
 data=np.array(data_)
 data=data[:,:]
 [m1,n1]=np.shape(data)
@@ -43,6 +43,6 @@ y=label
 data_2,importance=Light_lasso(X,y,0.005)
 shu=data_2
 data_csv = pd.DataFrame(data=shu)
-data_csv.to_csv('Group_LassoRBPAthaliana.csv')
+data_csv.to_csv('')
 data_csv = pd.DataFrame(data=importance)
-data_csv.to_csv('GL_RBPAthaliana_importance.csv')
+data_csv.to_csv('')
