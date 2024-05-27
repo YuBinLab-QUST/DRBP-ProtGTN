@@ -8,7 +8,7 @@ def TSVD(data,n_components=300):
     new_data=svd.fit_transform(data)
     return new_data
 
-data_input = pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv')
+data_input = pd.read_csv(r'')
 data_ = np.array(data_input)
 data = data_[:,:]
 # label1=np.ones((int(7129),1))#Value can be changed
@@ -22,5 +22,5 @@ new_RNA_data = TSVD(Zongshu,n_components=100)
 
 data_new = np.hstack((new_RNA_data,))
 optimal_RPI_features = pd.DataFrame(data=data_new)
-optimal_RPI_features.to_csv('RBP_TSVD.csv')
+optimal_RPI_features.to_csv('')
 
