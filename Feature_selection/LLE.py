@@ -11,7 +11,7 @@ from sklearn.preprocessing import scale,StandardScaler
 from sklearn.metrics import roc_curve, auc
 from dimensional_reduction1 import LLE
 #import utils.tools as utils
-data_=pd.read_csv(r'D:\PycharmProjects\my\feature extraction\RBPhunhe2.csv')
+data_=pd.read_csv(r'')
 data=np.array(data_)
 data=data[:,:]
 print(data.shape)
@@ -26,4 +26,4 @@ shu=scale(data)
 new_X=LLE(shu,n_components=100)
 shu=new_X
 data_csv = pd.DataFrame(data=shu)
-data_csv.to_csv('RBP_LLE.csv')
+data_csv.to_csv('')
