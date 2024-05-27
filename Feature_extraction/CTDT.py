@@ -81,16 +81,12 @@ def CTDT(fastas):
 			code = code + [c1221/len(aaPair), c1331/len(aaPair), c2332/len(aaPair)]
 		encodings.append(code)
 	return encodings
-# fastas = readFasta.readFasta(r"D:\PycharmProjects\DRBPPred-GAT\Dataset\Training\NBP_training.txt")
-# fastas=readFasta.readFasta(r"D:\PycharmProjects\my\dataset\Training\RBP_training.txt")
-# fastas=readFasta.readFasta(r"D:\PycharmProjects\my\dataset\Test\Athaliana.txt")
-fastas=readFasta.readFasta(r"D:\PycharmProjects\my\dataset\Test\PDB186.txt")
-# fastas = readFasta.readFasta(r"D:\PycharmProjects\DRBPPred-GAT\Dataset\Training\NBP_training.txt")
-# fastas = readFasta.readFasta(r"D:\PycharmProjects\DRBPPred-GAT\Dataset\Test\PDB186.txt")
-# fastas=pd.read_csv("D:\PycharmProjects\DRBPPred-GAT\Dataset\Training\DBP_training.txt")
+
+fastas=readFasta.readFasta(r"")
+
 data_CTDT=CTDT(fastas)
 data_T1=np.array(data_CTDT)
 data_T2=data_T1[1:,1:]
 data_T=data_T2.astype(np.float) 
 data_PseAAC=pd.DataFrame(data=data_T)
-data_PseAAC.to_csv('CTDT_PDB186.csv')
+data_PseAAC.to_csv('')
