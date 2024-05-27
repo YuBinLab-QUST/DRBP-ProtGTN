@@ -1,5 +1,5 @@
 % Step 1: Load the dataset
-X = csvread('PDB14189hunhe2.csv', 1, 0); % Skipping the header row if present
+X = csvread('', 1, 0); % Skipping the header row if present
 % Step 2: Construct Y based on your criteria
 Y = [ones(7129, 1); zeros(7060, 1)]; % Assuming 1 for positive and 0 for negative
 
@@ -22,4 +22,4 @@ num_Component = 100; % Desired number of dimensions
 [kplsXS] = kernelPLS(K, Y, num_Component);
 
 % Now kplsXS contains the reduced dimensionality data.
-csvwrite('PDB14189_KPLS_21.csv', kplsXS);
+csvwrite('', kplsXS);
