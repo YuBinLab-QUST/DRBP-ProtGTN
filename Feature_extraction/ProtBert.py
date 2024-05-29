@@ -14,7 +14,7 @@ def generate_protbert_features():
     configUrl = 'https://www.dropbox.com/s/d3yw7v4tvi5f4sk/bert_config.json?dl=1'
     vocabUrl = 'https://www.dropbox.com/s/jvrleji50ql5m5i/vocab.txt?dl=1'
 
-    downloadFolderPath = './DaDL-SChlo/code/ProtBert_model'
+    downloadFolderPath = ''
 
     modelFolderPath = downloadFolderPath
 
@@ -53,10 +53,10 @@ def generate_protbert_features():
 
     sequences = []
 
-    with open('./DaDL-SChlo/code/id_list_N.txt', 'r') as f:
+    with open('', 'r') as f:
         protein_list = f.readlines()
         for protein in protein_list:
-            seq = open('./DaDL-SChlo/data/Novel/NBP/{}.fasta'.format(protein.strip()), 'r').readlines()
+            seq = open('data/Novel/NBP/{}.fasta'.format(protein.strip()), 'r').readlines()
             sequences += [seq[1].strip()]
 
     sequences_Example = [' '.join(list(seq)) for seq in sequences]
@@ -78,7 +78,7 @@ def generate_protbert_features():
 
     # 将所有特征向量保存到文件
     pickle.dump({'ProtBert_features': all_protein_features},
-                gzip.open('./DaDL-SChlo/inputs/ProtBert_features_NBP.pkl.gz', 'wb'))
+                gzip.open('ProtBert_features_NBP.pkl.gz', 'wb'))
 
     print('Total time spent for ProtBERT:', time() - t0)
 
