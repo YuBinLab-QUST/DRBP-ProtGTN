@@ -1,5 +1,5 @@
 # DRBP-ProtGTN
-DRBP-ProtGTN: High-precision identification of DNA-binding proteins and RNA-binding proteins based on protein language model and Fast Graph Transformer Networks
+DRBP-ProtGTN: Identification of DNA-binding proteins and RNA-binding proteins by interpretable Fast Graph Transformer Networks and protein language model ProtBert
 
 ##Guiding principles: **The dataset contains both training dataset and independent test set.
 
